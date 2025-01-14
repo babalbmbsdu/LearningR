@@ -1,0 +1,36 @@
+---
+title: "Reproducible document"
+author: "Barath Balarasa"
+format: html
+---
+
+## Basics of R
+
+```{r}
+1 + 1
+```
+
+
+## Setup code chunk
+
+```{r setup}
+library(tidyverse)
+```
+
+## About me
+
+- Barath Balarasa
+- University of Sourthern Denmark
+
+im **a** *student*
+
+## Simple code
+
+```{r}
+3 * 3
+```
+
+## Testing for Git
+
+shit is cold outside
+
