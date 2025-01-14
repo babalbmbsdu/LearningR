@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Barath Balarasa">
+
+<title>Reproducible document</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="learning_files/libs/clipboard/clipboard.min.js"></script>
+<script src="learning_files/libs/quarto-html/quarto.js"></script>
+<script src="learning_files/libs/quarto-html/popper.min.js"></script>
+<script src="learning_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="learning_files/libs/quarto-html/anchor.min.js"></script>
+<link href="learning_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="learning_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="learning_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="learning_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="learning_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Reproducible document</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Barath Balarasa </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="basics-of-r" class="level2">
+<h2 class="anchored" data-anchor-id="basics-of-r">Basics of R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</section>
+<section id="setup-code-chunk" class="level2">
+<h2 class="anchored" data-anchor-id="setup-code-chunk">Setup code chunk</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>post_meal_data <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/post-meal-insulin.csv"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+Rows: 31 Columns: 85── Column specification ────────────────────────────────────────────────────────
+Delimiter: ";"
+chr  (2): OFS.ID, Group
+dbl (83): Age, BMI, Length, Weight, Bone.mineral.DXA, Fat.mass...DXA, Fat.ma...
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+</section>
+<section id="showing-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="showing-the-data">Showing the data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>post_meal_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 31 × 85
+   OFS.ID  Group   Age   BMI Length Weight Bone.mineral.DXA Fat.mass...DXA
+   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;            &lt;dbl&gt;          &lt;dbl&gt;
+ 1 OFS 301 FDR      50  27.5   1.83   92               3.54           30.2
+ 2 OFS 302 FDR      51  33.7   1.77  106.              4.05           36.4
+ 3 OFS 304 FDR      43  26.3   1.84   89.1             3.77           24.4
+ 4 OFS 303 FDR      55  25.9   1.8    84               3.14           27.5
+ 5 OFS 305 FDR      53  29.4   1.84   99.4             4.09           31.2
+ 6 OFS 306 FDR      51  23.7   1.8    76.8             3.21           20  
+ 7 OFS 307 FDR      48  23.9   1.78   75.8             3.33           15.4
+ 8 OFS 308 FDR      35  22     1.75   67.5             3.26           13.8
+ 9 OFS 309 FDR      54  26.4   1.83   87.9             4.49           20  
+10 OFS 310 FDR      52  24.5   1.72   72.2             2.87           28.5
+# ℹ 21 more rows
+# ℹ 77 more variables: Fat.mass.DXA &lt;dbl&gt;, Fat.free.mass.DXA &lt;dbl&gt;,
+#   Fat.free.soft.tissue.DXA &lt;dbl&gt;, FP.Glucose.screen &lt;dbl&gt;,
+#   P.Glucose..5.OGTT &lt;dbl&gt;, P.Glucose.0.OGTT &lt;dbl&gt;, P.GLucose.30.OGTT &lt;dbl&gt;,
+#   P.Glucose.60.OGTT &lt;dbl&gt;, P.Glucose.90.OGTT &lt;dbl&gt;, P.Glucose.120.OGTT &lt;dbl&gt;,
+#   FS.Insulin.screen &lt;dbl&gt;, Insulin..5.OGTT.X &lt;dbl&gt;, Insulin.0.OGTT.X &lt;dbl&gt;,
+#   Insulin.0.OGTT &lt;dbl&gt;, Insulin.30.OGTT &lt;dbl&gt;, Insulin.60.OGTT &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(post_meal_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 31
+Columns: 85
+$ OFS.ID                   &lt;chr&gt; "OFS 301", "OFS 302", "OFS 304", "OFS 303", "…
+$ Group                    &lt;chr&gt; "FDR", "FDR", "FDR", "FDR", "FDR", "FDR", "FD…
+$ Age                      &lt;dbl&gt; 50, 51, 43, 55, 53, 51, 48, 35, 54, 52, 47, 3…
+$ BMI                      &lt;dbl&gt; 27.5, 33.7, 26.3, 25.9, 29.4, 23.7, 23.9, 22.…
+$ Length                   &lt;dbl&gt; 1.83, 1.77, 1.84, 1.80, 1.84, 1.80, 1.78, 1.7…
+$ Weight                   &lt;dbl&gt; 92.0, 105.6, 89.1, 84.0, 99.4, 76.8, 75.8, 67…
+$ Bone.mineral.DXA         &lt;dbl&gt; 3.54, 4.05, 3.77, 3.14, 4.09, 3.21, 3.33, 3.2…
+$ Fat.mass...DXA           &lt;dbl&gt; 30.2, 36.4, 24.4, 27.5, 31.2, 20.0, 15.4, 13.…
+$ Fat.mass.DXA             &lt;dbl&gt; 27.9, 38.7, 21.9, 23.2, 31.2, 15.3, 11.8, 9.4…
+$ Fat.free.mass.DXA        &lt;dbl&gt; 64.34, 67.75, 67.97, 61.14, 68.99, 60.91, 64.…
+$ Fat.free.soft.tissue.DXA &lt;dbl&gt; 60.8, 63.7, 64.2, 58.0, 64.9, 57.7, 61.6, 55.…
+$ FP.Glucose.screen        &lt;dbl&gt; 5.1, 5.2, 4.8, 5.0, 5.5, 5.4, 4.9, 5.0, 4.8, …
+$ P.Glucose..5.OGTT        &lt;dbl&gt; 5.1, 5.6, 5.0, 5.3, 5.6, 5.8, 5.1, 5.3, 5.0, …
+$ P.Glucose.0.OGTT         &lt;dbl&gt; 5.10, 5.40, 4.90, 5.15, 5.55, 5.60, 5.00, 5.1…
+$ P.GLucose.30.OGTT        &lt;dbl&gt; 9.4, 8.4, 6.8, 8.8, 9.9, 8.9, 7.6, 6.4, 7.4, …
+$ P.Glucose.60.OGTT        &lt;dbl&gt; 6.9, 8.4, 4.3, 8.4, 10.6, 9.1, 6.3, 7.6, 6.8,…
+$ P.Glucose.90.OGTT        &lt;dbl&gt; 4.7, 8.7, 3.8, 7.5, 11.0, 7.1, 5.3, 6.3, 5.5,…
+$ P.Glucose.120.OGTT       &lt;dbl&gt; 4.3, 7.2, 4.3, 6.3, 7.6, 7.0, 3.5, 6.5, 4.9, …
+$ FS.Insulin.screen        &lt;dbl&gt; 50.0, 97.2, 20.8, 41.0, 41.0, 30.6, 36.8, 31.…
+$ Insulin..5.OGTT.X        &lt;dbl&gt; 53.4765, 90.2850, 20.8350, 52.0875, 44.4480, …
+$ Insulin.0.OGTT.X         &lt;dbl&gt; 51.74025, 93.75750, 20.83500, 46.53150, 42.71…
+$ Insulin.0.OGTT           &lt;dbl&gt; 310.4415, 562.5450, 125.0100, 279.1890, 256.2…
+$ Insulin.30.OGTT          &lt;dbl&gt; 368.085, 486.150, 173.625, 638.940, 430.590, …
+$ Insulin.60.OGTT          &lt;dbl&gt; 645.885, 673.665, 118.065, 1180.650, 361.140,…
+$ Insulin.90.OGTT          &lt;dbl&gt; 326.4150, 972.3000, 90.2850, 1250.1000, 527.8…
+$ Insulin.120.OGTT         &lt;dbl&gt; 201.4050, 694.5000, 69.4500, 902.8500, 284.74…
+$ PG.15                    &lt;dbl&gt; 5.4, 5.2, 4.9, 4.8, 5.9, 5.0, 5.0, 4.6, 5.3, …
+$ PG.5                     &lt;dbl&gt; 5.4, 5.4, 5.0, 4.8, 5.8, 4.9, 5.1, 4.6, 5.1, …
+$ PG1                      &lt;dbl&gt; 5.4, 5.4, 5.1, 4.8, 5.8, 5.1, 5.0, 4.9, 5.2, …
+$ PG2                      &lt;dbl&gt; 5.5, 5.4, 5.1, 4.8, 5.9, 5.1, 5.0, 4.9, 5.3, …
+$ PG3                      &lt;dbl&gt; 5.3, 5.4, 5.1, 4.7, 5.8, 5.1, 5.1, 4.9, 5.4, …
+$ PG5                      &lt;dbl&gt; 5.3, 5.4, 5.0, 4.9, 5.8, 5.0, 5.1, 4.8, 5.2, …
+$ PG8                      &lt;dbl&gt; 5.5, 5.5, 5.1, 4.9, 5.7, 5.0, 5.1, 4.7, 5.2, …
+$ PG10                     &lt;dbl&gt; 5.5, 5.6, 5.1, 5.1, 5.7, 5.0, 5.2, 4.8, 5.4, …
+$ PG15                     &lt;dbl&gt; 5.8, 6.0, 5.0, 5.3, 6.2, 5.5, 5.7, 5.1, 6.0, …
+$ PG20                     &lt;dbl&gt; 6.1, 6.5, 5.2, 5.1, 7.2, 5.6, 6.1, 5.5, 6.4, …
+$ PG30                     &lt;dbl&gt; 6.9, 7.5, 5.5, 5.5, 8.0, 6.1, 7.9, 6.5, 7.1, …
+$ PG45                     &lt;dbl&gt; 7.6, 7.8, 5.8, 6.2, 9.3, 6.4, 9.8, 7.3, 7.2, …
+$ PG60                     &lt;dbl&gt; 6.5, 7.5, 5.6, 6.7, 9.1, 5.9, 9.4, 6.2, 6.8, …
+$ PG90                     &lt;dbl&gt; 5.3, 7.5, 4.5, 5.0, 7.6, 4.8, 7.3, 4.7, 6.6, …
+$ PG120                    &lt;dbl&gt; 5.1, 7.5, 5.0, 4.7, 5.8, 3.8, 5.0, 4.9, 5.2, …
+$ CP.15                    &lt;dbl&gt; 0.93, 0.99, 0.39, 0.84, 0.69, 0.51, 0.64, 0.3…
+$ CP.5                     &lt;dbl&gt; 0.08, 1.05, 0.40, 0.81, 0.69, 0.51, 0.64, 0.3…
+$ CP1                      &lt;dbl&gt; 0.90, 1.05, 0.41, 0.79, 0.71, 0.53, 0.60, 0.3…
+$ CP2                      &lt;dbl&gt; 0.96, 1.07, 0.41, 0.79, 0.74, 0.54, 0.64, 0.4…
+$ CP3                      &lt;dbl&gt; 0.95, 1.10, 0.41, 0.80, 0.80, 0.53, 0.66, 0.4…
+$ CP5                      &lt;dbl&gt; 1.01, 1.15, 0.44, 0.96, 0.84, 0.57, 0.70, 0.3…
+$ CP8                      &lt;dbl&gt; 1.09, 1.24, 0.45, 0.92, 0.82, 0.62, 0.70, 0.3…
+$ CP10                     &lt;dbl&gt; 1.10, 1.19, 0.45, 0.93, 0.78, 0.59, 0.73, 0.3…
+$ CP15                     &lt;dbl&gt; 1.120, 1.390, 0.410, 1.000, 0.890, 0.820, 0.0…
+$ CP20                     &lt;dbl&gt; 1.23, 1.67, 0.46, 0.97, 1.22, 0.82, 0.90, 0.4…
+$ CP30                     &lt;dbl&gt; 1.52, 2.10, 0.57, 0.95, 1.50, 0.93, 1.42, 0.9…
+$ CP45                     &lt;dbl&gt; 2.60, 2.00, 0.75, 1.50, 1.83, 1.07, 1.78, 1.5…
+$ CP60                     &lt;dbl&gt; 2.40, 2.20, 0.89, 2.20, 2.10, 1.19, 2.20, 1.6…
+$ CP90                     &lt;dbl&gt; 2.20, 2.60, 0.76, 2.70, 2.70, 1.51, 2.30, 0.8…
+$ CP120                    &lt;dbl&gt; 1.61, 3.00, 0.70, 2.20, 2.00, 1.34, 1.51, 0.6…
+$ Insulin.15               &lt;dbl&gt; 76.3950, 83.3400, 19.4460, 76.3950, 56.9490, …
+$ Insulin.5                &lt;dbl&gt; 66.9450, 104.1750, 21.5295, 69.4500, 52.7820,…
+$ Insulin1                 &lt;dbl&gt; 67.3665, 97.2300, 22.2240, 65.9775, 51.3930, …
+$ Insulin2                 &lt;dbl&gt; 76.3950, 97.2300, 22.9185, 63.8940, 64.5885, …
+$ Insulin3                 &lt;dbl&gt; 83.3400, 90.2850, 23.6130, 69.4500, 58.3380, …
+$ Insulin5                 &lt;dbl&gt; 90.2850, 125.0100, 30.5580, 111.1200, 76.3950…
+$ Insulin8                 &lt;dbl&gt; 104.1750, 152.7900, 29.1690, 97.2300, 66.6720…
+$ Insulin10                &lt;dbl&gt; 97.2300, 138.9000, 26.3910, 90.2850, 59.0325,…
+$ Insulin15                &lt;dbl&gt; 111.1200, 194.4600, 22.2240, 125.0100, 97.230…
+$ Insulin20                &lt;dbl&gt; 138.9000, 291.6900, 32.6415, 111.1200, 201.40…
+$ Insulin30                &lt;dbl&gt; 187.515, 319.470, 54.171, 104.175, 270.855, 1…
+$ Insulin45                &lt;dbl&gt; 465.315, 381.975, 76.395, 270.855, 326.415, 1…
+$ Insulin60                &lt;dbl&gt; 305.5800, 333.3600, 97.2300, 493.0950, 347.25…
+$ Insulin90                &lt;dbl&gt; 222.2400, 395.8650, 44.4480, 458.3700, 381.97…
+$ Insulin120               &lt;dbl&gt; 138.9000, 465.3150, 50.6985, 250.0200, 180.57…
+$ id                       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14…
+$ iauc_cp                  &lt;dbl&gt; 118.24750, 144.46000, 35.96000, 120.63500, 14…
+$ auc_cp                   &lt;dbl&gt; 236.900, 278.110, 88.610, 233.540, 238.325, 1…
+$ iauc_pg                  &lt;dbl&gt; 82.97500, 242.20000, 39.43182, 83.75000, 209.…
+$ auc_pg                   &lt;dbl&gt; 805.55, 944.20, 693.95, 731.15, 1003.75, 712.…
+$ iauc_ins                 &lt;dbl&gt; 18522.315, 30992.062, 4482.650, 27388.765, 26…
+$ auc_ins                  &lt;dbl&gt; 28728.44, 42242.96, 7107.86, 37592.94, 33862.…
+$ kef_ins                  &lt;dbl&gt; 145.49775, 147.23400, 34.03050, 164.29266, 10…
+$ kef_cp                   &lt;dbl&gt; 145.49775, 147.23400, 34.03050, 164.29266, 10…
+$ kef_glu                  &lt;dbl&gt; 145.49775, 147.23400, 34.03050, 164.29266, 10…
+$ iauc_cp_e                &lt;dbl&gt; 98.72500, 120.30000, 29.00500, 110.17500, 134…
+$ iauc_pg_e                &lt;dbl&gt; 75.00000, 193.75000, 23.28409, 57.08824, 231.…
+$ iauc_ins_e               &lt;dbl&gt; 16095.038, 24307.500, 3638.138, 25713.862, 25…
+$ glykemi                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, …</code></pre>
+</div>
+</div>
+</section>
+<section id="about-me" class="level2">
+<h2 class="anchored" data-anchor-id="about-me">About me</h2>
+<ul>
+<li>Barath Balarasa</li>
+<li>University of Sourthern Denmark</li>
+</ul>
+<p>im <strong>a</strong> <em>student</em></p>
+</section>
+<section id="simple-code" class="level2">
+<h2 class="anchored" data-anchor-id="simple-code">Simple code</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+</section>
+<section id="testing-for-git" class="level2">
+<h2 class="anchored" data-anchor-id="testing-for-git">Testing for Git</h2>
+<p>shit is cold outside</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
