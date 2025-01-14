@@ -1,10 +1,8 @@
-TODO: Add more to the title of your project here
-
-# LearningR:
+# LearningR: Intro R course
 
 TODO: Give a brief description of what your project is about
 
-This project...
+This project is about learning R.
 
 # Brief description of folder and file contents
 
