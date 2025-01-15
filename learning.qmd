@@ -19,7 +19,7 @@ format: html
 library(tidyverse)
 post_meal_data <- read_csv2(
   here::here("data/post-meal-insulin.csv")
-  )
+)
 ```
 
 ## Showing the data
@@ -32,6 +32,117 @@ post_meal_data
 ```{r}
 glimpse(post_meal_data)
 ```
+
+```{r}
+ggplot(post_meal_data, aes(x = BMI)) +
+  geom_histogram()
+```
+
+```{r}
+#| fig-cap: "Distribution of BMI"
+#| label: fig-BMI-histogram
+ggplot(post_meal_data, aes(x = BMI)) +
+  geom_histogram()
+```
+@fig-BMI-histogram
+
+## Exercise: discrete plots
+
+```{r}
+#| fig-cap: "Dist. of Group"
+#| label: fig-Group
+ggplot(post_meal_data, aes(x = Group)) +
+  geom_bar()
+```
+
+See @fig-Group above for a cool plot!
+
+
+```{r}
+#| fig-cap: "Dist. of Glykemi"
+#| label: fig-gly
+ggplot(post_meal_data, aes(x = glykemi)) +
+  geom_bar(fill = "#00BE0067", color = "darkred")
+```
+
+See @fig-gly above for a cool plot!
+
+```{r}
+post_meal_data |>
+  ggplot(aes(x = Group, fill = glykemi)) +
+  geom_bar()
+```
+
+```{r}
+post_meal_data |>
+  #| fig-cap: "Glykemi Group"
+  ggplot(aes(x = Group, fill = as.character(glykemi))) +
+  geom_bar()
+```
+
+```{r}
+post_meal_data |>
+  #| fig-cap: "Glykemi Group extended"
+  ggplot(aes(x = Group, fill = as.character(glykemi))) +
+  geom_bar(position = position_dodge())
+```
+
+```{r}
+ggplot(post_meal_data, aes(x = BMI)) +
+  geom_histogram()
+```
+
+```{r}
+ggplot(post_meal_data, aes(x = glykemi)) +
+  geom_bar()
+```
+
+```{r side-by-side-figs}
+#| label: fig-bmi-glykemi
+#| fig-cap: "BMI and Glycemia, side-by-side"
+#| fig-subcap:
+#| - "Distribution of BMI"
+#| - "Number of those with glycemia"
+#| - "Number of those with glycemia with cool colors"
+#| layout-ncol: 3
+
+ggplot(post_meal_data, aes(x = BMI)) +
+  geom_histogram()
+
+ggplot(post_meal_data, aes(x = glykemi)) +
+  geom_bar()
+
+ggplot(post_meal_data, aes(x = glykemi)) +
+  geom_bar(fill = "#00BE0067", color = "darkred")
+```
+
+## Plotting
+
+```{r}
+#| fig-cap: "Scatterplot showing BMI against AUC of bloody glucose"
+#| label: fig-bmi-auc_pg
+ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
+  geom_point()
+```
+
+
+
+```{r}
+#| fig-cap: "Scatterplot showing BMI against AUC of bloody glucose - smooth"
+#| label: fig-bmi-auc_pg-smooth
+ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
+  geom_point(color = "purple") +
+  geom_smooth(fill = "#00BE0067", color = "darkred")
+```
+
+
+# install.packages("pak")
+pak::pak("r-lib/usethis")
+
+
+
+
+
 
 
 
@@ -51,6 +162,3 @@ im **a** *student*
 ## Testing for Git
 
 shit is cold outside
-
-
-
