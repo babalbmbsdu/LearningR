@@ -17,9 +17,10 @@ format: html
 #| message: false
 #| warning: false
 library(tidyverse)
-post_meal_data <- read_csv2(
-  here::here("data/post-meal-insulin.csv")
-)
+post_meal_data <-
+  read_csv2(here::here("data/post-meal-insulin.csv"))
+
+small_post_meal_data <- select(post_meal_data, id, Age, BMI, Group, auc_pg, auc_ins, glykemi)
 ```
 
 ## Showing the data
@@ -136,19 +137,26 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
 ```
 
 
-# install.packages("pak")
-pak::pak("r-lib/usethis")
-
-usethis::gh_token_help()
-
-usethis::create_github_token()
-
-
 ## Pushing changes to remote
 
 
 ## Pulling files locally
 
+
+## Selecting data
+```{r}
+select(post_meal_data, Age)
+
+select(post_meal_data, Age, BMI, Weight)
+
+select(post_meal_data, -Group, -Age)
+
+select(post_meal_data, starts_with("PG"))
+
+select(post_meal_data, ends_with("OGTT"))
+
+select(post_meal_data, contains("mass"))
+```
 
 
 
