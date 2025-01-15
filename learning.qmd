@@ -159,8 +159,46 @@ select(post_meal_data, contains("mass"))
 ```
 
 
+## Renaming specific columns
+```{r}
+small_post_meal_data |>
+  rename(auc_glucose = auc_pg)
+
+small_post_meal_data |>
+  rename(
+    auc_glucose = auc_pg,
+    auc_insulin = auc_ins
+  )
+```
+
+## Select and rename tasks
+
+# Task 1.
+```{r}
+post_meal_data |>
+  select(contains("OGTT"))
+```
 
 
+
+# Task 2.
+
+```{r}
+post_meal_data |>
+  select(contains(".."), -contains("...")) |>
+  rename(
+    P.glucose.minus5.OGGT = P.Glucose..5.OGTT,
+    Insulin.minus5.OGTT.X = Insulin..5.OGTT.X
+  )
+```
+
+# Task 3.
+basic_info <- select(post_meal_data, id, BMI, Length, Weight, Age)
+rename(basic_info, Height = Length)
+
+basic_info|>
+  select(post_meal_data, id, BMI, Length, Weight, Age) |>
+  rename(basic_info, Height = Length)
 
 ## About me
 
