@@ -139,8 +139,9 @@ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
 # install.packages("pak")
 pak::pak("r-lib/usethis")
 
+usethis::gh_token_help()
 
-
+usethis::create_github_token()
 
 
 
