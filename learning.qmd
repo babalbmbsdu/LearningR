@@ -232,12 +232,19 @@ small_post_meal_data |>
 
 small_post_meal_data |>
   filter(Group == "CTR" | BMI >= 25)
-small_post_meal_data |>
-  
 ```
 
 11 people in the group CTR have a BMI higher than 11
 23 people have a BMI greater than 25 or they are in the CTR Group
+
+## Modify or column
+
+```{r}
+tidier_post_meal_data|>
+  mutate( insulin_glucose_ratio = auc_insulin/auc_glucose, 
+          Group = if_else(Group == "CTR", "Control", "First_Degree_Relative"))
+```
+
 
 ## About me
 
