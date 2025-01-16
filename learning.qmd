@@ -23,10 +23,18 @@ post_meal_data <-
 small_post_meal_data <- select(post_meal_data, id, Age, BMI, Group, auc_pg, auc_ins, glykemi)
 
 tidier_post_meal_data <- small_post_meal_data |>
-  rename(auc_glucose = auc_pg,
-         auc_insulin = auc_ins) |>
+  rename(
+    auc_glucose = auc_pg,
+    auc_insulin = auc_ins
+  ) |>
   filter(glykemi == 0) |>
   select(-glykemi)
+
+tidied_post_meal_data <- tidier_post_meal_data |>
+  mutate(
+    insulin_glucose_ratio = auc_insulin / auc_glucose,
+    Group = if_else(Group == "CTR", "Control", "First-degree relative")
+  )
 ```
 
 ## Showing the data
@@ -218,8 +226,7 @@ small_post_meal_data |>
   filter(BMI >= 25)
 
 small_post_meal_data |>
-  filter( Group == "CTR")
-
+  filter(Group == "CTR")
 ```
 
 Only 4 people have hypoglycemia
@@ -228,7 +235,7 @@ Only 4 people have hypoglycemia
 
 ```{r}
 small_post_meal_data |>
-  filter(Group == "CTR", BMI >=25)
+  filter(Group == "CTR", BMI >= 25)
 
 small_post_meal_data |>
   filter(Group == "CTR" | BMI >= 25)
@@ -240,9 +247,11 @@ small_post_meal_data |>
 ## Modify or column
 
 ```{r}
-tidier_post_meal_data|>
-  mutate( insulin_glucose_ratio = auc_insulin/auc_glucose, 
-          Group = if_else(Group == "CTR", "Control", "First_Degree_Relative"))
+tidier_post_meal_data |>
+  mutate(
+    insulin_glucose_ratio = auc_insulin / auc_glucose,
+    Group = if_else(Group == "CTR", "Control", "First_Degree_Relative")
+  )
 ```
 
 
@@ -256,13 +265,56 @@ post_meal_data |>
 # Task 2.
 post_meal_data |>
   mutate(
-    percent_body_fat= (Fat.mass.DXA / Weight) * 100
-  ) |> 
-  filter(percent_body_fat> 30)
+    percent_body_fat = (Fat.mass.DXA / Weight) * 100
+  ) |>
+  filter(percent_body_fat > 30)
 ```
-task A -> 16 persons
+Task A -> **16** *persons*
 
-task B -> 10
+Task B -> **10** *persons*
+
+## Visualizing with jitter plot
+
+```{r}
+tidied_post_meal_data |>
+  mutate(Overweight = if_else(BMI >= 25, "Overweight", "Not overweight")) |>
+  ggplot(aes(x = Overweight, y = insulin_glucose_ratio)) +
+  geom_jitter(color = "blue")
+```
+
+## Plotting three or more variables
+
+```{r dotplot}
+tidied_post_meal_data |>
+  filter(BMI < 30) |>
+  ggplot(aes(x = Age, y = auc_insulin, colour = Group)) +
+  geom_point()
+```
+
+
+```{r old young dotplot - cols}
+tidied_post_meal_data |>
+  filter(BMI < 30) |>
+  mutate(Young = if_else(Age < 40, "Young", "Old")) |>
+  ggplot(aes(x = BMI, y = insulin_glucose_ratio, colour = Group)) +
+  geom_point() +
+  facet_grid(cols = vars(Young))
+```
+
+
+```{r old young dotplot - rows}
+tidied_post_meal_data |>
+  filter(BMI < 30) |>
+  mutate(Young = if_else(Age < 40, "Young", "Old")) |>
+  ggplot(aes(x = BMI, y = insulin_glucose_ratio, colour = Group)) +
+  geom_point() +
+  facet_grid(rows = vars(Young)) +
+  labs(
+    x = "Body Mass Index (BMI)",
+    y = "Insulin to glucoise ratio"
+  )
+```
+
 
 
 
